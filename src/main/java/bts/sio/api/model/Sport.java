@@ -16,4 +16,9 @@ public class Sport {
 
     @Column(name="descriptif")
     private String descriptif;
+
+    @ManyToOne
+    @JoinColumn(name = "site_id")
+    private Site site;
+
 }
