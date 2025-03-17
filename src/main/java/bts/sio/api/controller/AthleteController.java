@@ -20,47 +20,41 @@ public class AthleteController {
      * @param athlete An object athlete
      * @return The athlete object saved
      */
-    @PostMapping("/athlete")
+    @PostMapping("/athlete/ajouter")
     public Athlete createAthlete(@RequestBody Athlete athlete) {
         return athleteService.saveAthlete(athlete);
     }
-
 
     /**
      * Read - Get one athlete
      * @param id The id of the athlete
      * @return An Athlete object full filled
      */
-    @GetMapping("/athlete/{id}")
+    @GetMapping("/athlete/consulter/{id}")
     public Athlete getAthlete(@PathVariable("id") final Long id) {
         Optional<Athlete> athlete = athleteService.getAthlete(id);
-        if(athlete.isPresent()) {
-            return athlete.get();
-        } else {
-            return null;
-        }
+        return athlete.orElse(null);
     }
 
     /**
      * Read - Get all athletes
      * @return - An Iterable object of Athlete full filled
      */
-    @GetMapping("/athletes")
-    public Iterable<Athlete> getAthletes() {
-        return athleteService.getAthletes();
+    @GetMapping("/athlete/lister")
+    public Iterable<Athlete> getLesAthletes() {
+        return athleteService.getLesAthletes();
     }
 
     /**
      * Update - Update an existing athlete
      * @param id - The id of the athlete to update
      * @param athlete - The athlete object updated
-     * @return
      */
-    @PutMapping("/athlete/{id}")
+    @PutMapping("/athletes/modifier/{id}")
     public Athlete updateAthlete(@PathVariable("id") final Long id, @RequestBody Athlete athlete) {
-        Optional<Athlete> e = athleteService.getAthlete(id);
-        if(e.isPresent()) {
-            Athlete currentAthlete = e.get();
+        Optional<Athlete> ath = athleteService.getAthlete(id);
+        if(ath.isPresent()) {
+            Athlete currentAthlete = ath.get();
 
             String nom = athlete.getNom();
             if(nom != null) {
@@ -68,15 +62,15 @@ public class AthleteController {
             }
             String prenom = athlete.getPrenom();
             if(prenom != null) {
-                currentAthlete.setPrenom(prenom);;
+                currentAthlete.setPrenom(prenom);
             }
             Pays pays = athlete.getPays();
             if(pays != null) {
-                currentAthlete.setPays(pays);;
+                currentAthlete.setPays(pays);
             }
             Sport sport = athlete.getSport();
             if(sport != null) {
-                currentAthlete.setSport(sport);;
+                currentAthlete.setSport(sport);
             }
 
             athleteService.saveAthlete(currentAthlete);
@@ -86,12 +80,11 @@ public class AthleteController {
         }
     }
 
-
     /**
      * Delete - Delete an athlete
      * @param id - The id of the athlete to delete
      */
-    @DeleteMapping("/athlete/{id}")
+    @DeleteMapping("/athlete/supprimer/{id}")
     public void deleteAthlete(@PathVariable("id") final Long id) {
         athleteService.deleteAthlete(id);
     }

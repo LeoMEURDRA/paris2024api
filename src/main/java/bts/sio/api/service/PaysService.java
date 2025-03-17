@@ -22,4 +22,13 @@ public class PaysService {
     public Iterable<Pays> getLesPays() {
         return paysRepository.findAll();
     }
+
+    public void deletePays(final Long id) {
+        paysRepository.deleteById(id);
+    }
+
+    public Pays savePays(Pays pays) {
+        return paysRepository.save(pays);
+    }
+
 }

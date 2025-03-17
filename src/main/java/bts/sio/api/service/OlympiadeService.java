@@ -11,6 +11,7 @@ import java.util.Optional;
 @Data
 @Service
 public class OlympiadeService {
+
     @Autowired
     private OlympiadeRepository olympiadeRepository;
 
@@ -21,5 +22,13 @@ public class OlympiadeService {
     public Iterable<Olympiade> getLesOlympiades() {
         return olympiadeRepository.findAll();
     }
-}
 
+    public void deleteOlympiade(final Long id) {
+        olympiadeRepository.deleteById(id);
+    }
+
+    public Olympiade saveOlympiade(Olympiade olympiade) {
+        return olympiadeRepository.save(olympiade);
+    }
+
+}

@@ -7,6 +7,7 @@ import lombok.Data;
 @Entity
 @Table(name = "pays")
 public class Pays {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,4 +17,5 @@ public class Pays {
 
     @Column(name="nom")
     private String nom;
+
 }
