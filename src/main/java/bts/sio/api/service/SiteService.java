@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Data
 @Service
 public class SiteService {
+
     @Autowired
     private SiteRepository siteRepository;
 
@@ -17,7 +19,7 @@ public class SiteService {
         return siteRepository.findById(id);
     }
 
-    public Iterable<Site> getSites() {
+    public Iterable<Site> getLesSites() {
         return siteRepository.findAll();
     }
 
@@ -25,8 +27,8 @@ public class SiteService {
         siteRepository.deleteById(id);
     }
 
-    public Site saveSport(Site site) {
-        Site savedSite = siteRepository.save(site);
-        return savedSite;
+    public Site saveSite(Site site) {
+        return siteRepository.save(site);
     }
+
 }

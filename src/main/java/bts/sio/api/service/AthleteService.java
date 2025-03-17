@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+
 @Data
 @Service
 public class AthleteService {
+
     @Autowired
     private AthleteRepository athleteRepository;
 
@@ -17,7 +19,7 @@ public class AthleteService {
         return athleteRepository.findById(id);
     }
 
-    public Iterable<Athlete> getAthletes() {
+    public Iterable<Athlete> getLesAthletes() {
         return athleteRepository.findAll();
     }
 
@@ -26,7 +28,7 @@ public class AthleteService {
     }
 
     public Athlete saveAthlete(Athlete athlete) {
-        Athlete savedAthlete = athleteRepository.save(athlete);
-        return savedAthlete;
+        return athleteRepository.save(athlete);
     }
+
 }

@@ -7,13 +7,21 @@ import lombok.Data;
 @Entity
 @Table(name = "site")
 public class Site {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
+    @Column(name="nom")
     private String nom;
+
+    @Column(name="rue")
     private String rue;
+
+    @Column(name="code_postal")
     private Integer code_postal;
+
+    @Column(name="ville")
     private String ville;
 
 }
