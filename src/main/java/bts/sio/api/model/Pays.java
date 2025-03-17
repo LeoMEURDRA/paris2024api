@@ -11,6 +11,9 @@ public class Pays {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name="code")
+    private String code;
+
     @Column(name="nom")
     private String nom;
 }
