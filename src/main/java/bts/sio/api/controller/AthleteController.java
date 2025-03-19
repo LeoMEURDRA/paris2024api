@@ -7,6 +7,7 @@ import bts.sio.api.service.AthleteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -43,6 +44,15 @@ public class AthleteController {
     @GetMapping("/athlete/lister")
     public Iterable<Athlete> getLesAthletes() {
         return athleteService.getLesAthletes();
+    }
+
+    /**
+     * Read - Get all athletes from a sport
+     * @return - An Iterable object of Athlete full filled
+     */
+    @GetMapping("/athlete/pays/{paysId}")
+    public List<Athlete> getAthletes(@PathVariable Long paysId) {
+        return athleteService.getLesAthletesByPays(paysId);
     }
 
     /**
