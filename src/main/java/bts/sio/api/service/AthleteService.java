@@ -41,9 +41,6 @@ public class AthleteService {
     }
 
     public Athlete saveAthlete(Athlete athlete) {
-        if (athlete.getId() == 0) {
-            athlete.setId(null);
-        }
         return athleteRepository.save(athlete);
     }
 
