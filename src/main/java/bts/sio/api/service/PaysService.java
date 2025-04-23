@@ -28,6 +28,9 @@ public class PaysService {
     }
 
     public Pays savePays(Pays pays) {
+        if (pays.getId() == 0) {
+            pays.setId(null);
+        }
         return paysRepository.save(pays);
     }
 
